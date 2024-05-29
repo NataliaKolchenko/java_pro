@@ -1,6 +1,6 @@
-package org.example.Practice;
+package org.example.Practice.ClassTasks;
 
-public class Bicycle  extends Vehicle{
+public class Bicycle  extends Vehicle {
     private String bicycleType;
 
     public Bicycle(String nameVehicle, int speed, String bicycleType) {

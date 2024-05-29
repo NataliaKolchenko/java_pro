@@ -1,4 +1,4 @@
-package org.example.Practice;
+package org.example.Practice.ClassTasks;
 
 public class Auto extends Vehicle {
     private String engineType;
