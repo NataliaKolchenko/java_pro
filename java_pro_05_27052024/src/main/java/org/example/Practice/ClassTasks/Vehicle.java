@@ -1,6 +1,6 @@
 
 
-package org.example.Practice;
+package org.example.Practice.ClassTasks;
 
 public class Vehicle {
     private String nameVehicle;
