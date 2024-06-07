@@ -8,7 +8,7 @@ package org.example.view;
 
 import java.util.Scanner;
 
-public class ViewTerminal implements View{
+public class ViewTerminal implements View {
     Scanner scan = new Scanner(System.in);
     @Override
     public int getValue (String title) {
