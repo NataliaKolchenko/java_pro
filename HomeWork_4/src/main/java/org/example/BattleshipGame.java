@@ -4,7 +4,6 @@ import java.util.Scanner;
 
 public class BattleshipGame {
     public static void main(String[] args) {
-
         Scanner scanner = new Scanner(System.in);
         System.out.println("Добро пожаловать в игру 'Морской бой'!");
 
@@ -16,12 +15,15 @@ public class BattleshipGame {
         String nameB = scanner.nextLine();
         Player playerB = new Player(nameB);
 
-        playerA.placeShips(playerA);
-        playerB.placeShips(playerB);
+        playerA.placeShips();
+        playerB.placeShips();
+
 
         while (!playerA.allShipsNotSink() && !playerB.allShipsNotSink()) {
-            playerA.receiveShot(playerB);
-            playerB.receiveShot(playerA);
+                playerA.receiveShot(playerB);
+                playerB.receiveShot(playerA);
+            }
+
         }
+
     }
-}
