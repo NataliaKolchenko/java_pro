@@ -16,7 +16,9 @@ public class BattleshipGame {
         Player playerB = new Player(nameB);
 
         playerA.placeShips();
+//        playerA.fillPlayerField();
         playerB.placeShips();
+
 
 
         while (!playerA.allShipsNotSink() && !playerB.allShipsNotSink()) {
