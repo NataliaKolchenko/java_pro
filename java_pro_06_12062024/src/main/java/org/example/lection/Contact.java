@@ -1,4 +1,4 @@
-package org.example;
+package org.example.lection;
 
 public class Contact {
     private int id;

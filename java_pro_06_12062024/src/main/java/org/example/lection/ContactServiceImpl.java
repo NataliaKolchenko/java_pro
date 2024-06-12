@@ -1,4 +1,4 @@
-package org.example;
+package org.example.lection;
 
 import java.util.ArrayList;
 
