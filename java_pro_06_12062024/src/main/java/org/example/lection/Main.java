@@ -5,9 +5,6 @@ public class Main {
 
         ContactServiceImpl contacts = new ContactServiceImpl();
         contacts.createNewContact(new Contact.ContactBuilder(1).setName("John").build());
-        contacts.createNewContact(new Contact.ContactBuilder(1).setName("John").build());
-        contacts.createNewContact(new Contact.ContactBuilder(1).setName("John").build());
-        contacts.createNewContact(new Contact.ContactBuilder(1).setName("John").build());
 
         contacts.createNewContact(new Contact.ContactBuilder(2).setName("Anna").setPhoneNumber("012932097").build());
 
