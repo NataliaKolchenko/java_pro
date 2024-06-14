@@ -5,6 +5,8 @@ public class SidesShapeBuilder {
     private int sideB;
     private int sideC;
     private int diagonal;
+    private int corner1;
+    private int corner2;
 
     public SidesShapeBuilder setSideA(int sideA) {
         this.sideA = sideA;
@@ -25,15 +27,24 @@ public class SidesShapeBuilder {
         this.diagonal = diagonal;
         return this;
     }
+    public SidesShapeBuilder setCorner1 (int corner1) {
+        this.corner1 = corner1;
+        return this;
+    }
+
+    public SidesShapeBuilder setCorner2 (int corner2) {
+        this.corner2 = corner2;
+        return this;
+    }
 
 
 
-    public GeometricShapeWithSides buildSquare () {
+    public Square buildSquare () {
         return new Square(sideA, diagonal);
     }
 
-    public GeometricShapeWithSides buildTriangle () {
-        return new Triangle(sideA, sideB, sideC);
+    public Triangle buildTriangle () {
+        return new Triangle(sideA, sideB, sideC, corner1, corner2);
     }
 
 

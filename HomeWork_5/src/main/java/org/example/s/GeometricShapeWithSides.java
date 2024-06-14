@@ -7,6 +7,8 @@ public abstract class GeometricShapeWithSides implements OperationsWithShapes {
     protected int sideB;
     protected int sideC;
     protected int diagonal;
+    protected int corner1;
+    protected int corner2;
 
     public static final double PI = 3.14;
 
@@ -24,5 +26,13 @@ public abstract class GeometricShapeWithSides implements OperationsWithShapes {
 
     public int getDiagonal() {
         return diagonal;
+    }
+
+    public int getCorner1() {
+        return corner1;
+    }
+
+    public int getCorner2() {
+        return corner2;
     }
 }
