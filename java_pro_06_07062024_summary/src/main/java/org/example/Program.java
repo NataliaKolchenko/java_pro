@@ -1,11 +1,6 @@
-package org.example;
+package java_pro_06_07062024.src.main.java.org.example;
 
-import org.example.infractructure.CalcApp;
-import org.example.model.Model;
-import org.example.model.MultipleModel;
-import org.example.presenter.Presenter;
-import org.example.view.View;
-import org.example.view.ViewTerminal;
+import java_pro_06_07062024.src.main.java.org.example.infractructure.CalcApp;
 
 //Создать класс Program с методом main, который:
 //

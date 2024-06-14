@@ -1,7 +1,7 @@
-package org.example.presenter;
+package java_pro_06_07062024.src.main.java.org.example.presenter;
 
-import org.example.view.View;
-import org.example.model.Model;
+import java_pro_06_07062024.src.main.java.org.example.view.View;
+import java_pro_06_07062024.src.main.java.org.example.model.Model;
 
 //Создать класс Presenter для управления взаимодействием между моделью и представлением:
 //

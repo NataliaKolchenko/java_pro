@@ -1,6 +1,4 @@
-package org.example.model;
-
-import org.example.model.CalcModel;
+package java_pro_06_07062024.src.main.java.org.example.model;
 
 public class MultipleModel extends CalcModel {
     @Override

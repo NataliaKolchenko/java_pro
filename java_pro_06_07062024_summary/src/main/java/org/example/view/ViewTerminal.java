@@ -1,4 +1,4 @@
-package org.example.view;
+package java_pro_06_07062024.src.main.java.org.example.view;
 
 //Создать класс View для взаимодействия с пользователем:
 //
