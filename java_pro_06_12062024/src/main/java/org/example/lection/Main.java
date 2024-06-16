@@ -21,7 +21,7 @@ public class Main {
         System.out.println(contacts.getContactById(1));
 
         contacts.deleteContactByID(3);
-        System.out.println();
+        System.out.println("-----");
         System.out.println(contacts);
 
 
