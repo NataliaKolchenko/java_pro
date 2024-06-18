@@ -10,8 +10,6 @@ public class Main {
 
         HashMap<Integer, ArrayList<Integer>> mapa = new HashMap<>();
 
-        ArrayList<ArrayList<Integer>> listList = new ArrayList<>();
-
         for (int i = 0; i < arrayOne.length; i++) {
             for (int j = 0; j < arrayTwo.length; j++) {
                 if (arrayOne[i] == arrayTwo[j]) {
@@ -20,13 +18,7 @@ public class Main {
                 }
             }
         }
-
-
-        for (ArrayList<Integer> strArr : mapa.values()) {
-            listList.add(strArr);
-        }
-
-        System.out.println(listList);
+        System.out.println(mapa.values());
     }
 
 
