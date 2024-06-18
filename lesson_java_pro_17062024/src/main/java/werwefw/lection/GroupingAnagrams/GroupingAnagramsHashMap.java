@@ -1,4 +1,4 @@
-package werwefw.lection;
+package werwefw.lection.GroupingAnagrams;
 
 
 import java.util.ArrayList;
