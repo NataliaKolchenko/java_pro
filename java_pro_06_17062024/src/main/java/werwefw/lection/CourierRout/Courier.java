@@ -1,28 +1,39 @@
 package werwefw.lection.CourierRout;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 public class Courier {
 
     public static void main(String[] args) {
 
         var mapGenerator = new MapGenerator();
-        // System.out.println(
-        // new MapPrinter().printRawData(
-        // mapGenerator.getMap()));
+//         System.out.println(
+//         new MapPrinter().printRawData(
+//         mapGenerator.getMap()));
 //        System.out.println(
 //                new MapPrinter().printColoredMap(
 //                        mapGenerator.getMap()));
 
         var waveAlgorithm = new WaveAlgorithm(mapGenerator.getMap());
         //установка локации курьера
-        waveAlgorithm.colorize(new Point2D(5, 5));
+        Point2D startPoint = new Point2D(5, 5);
+        Point2D endPoint = new Point2D(1,12);
+
+        System.out.println("Start point:" + startPoint);
+        System.out.println("End point:" + endPoint+'\n');
+
+        waveAlgorithm.colorize(startPoint, endPoint);
 
 //         System.out.println(
 //         new MapPrinter().printColoredMap(
 //         mapGenerator.getMap()));
+
+        System.out.println(
+                new MapPrinter().printRawData(
+                        mapGenerator.getMap()));
+
+        System.out.println(waveAlgorithm.getRoad1(endPoint, startPoint));
+        System.out.println();
 
         System.out.println(
                 new MapPrinter().printRawData(
@@ -81,13 +92,13 @@ public class Courier {
         return map;
     }
 
-    public void setCat(Point2D pos) {
-        map[pos.x][pos.y] = -2;
-    }
-
-    public void setExit(Point2D pos) {
-        map[pos.x][pos.y] = -3;
-    }
+//    public void setCat(Point2D pos) {
+//        map[pos.x][pos.y] = -2;
+//    }
+//
+//    public void setExit(Point2D pos) {
+//        map[pos.x][pos.y] = -3;
+//    }
 }
 
 class MapPrinter {
@@ -134,10 +145,12 @@ class WaveAlgorithm {
         this.map = map;
     }
 
-    public void colorize(Point2D startPoint) {
+    public void colorize(Point2D startPoint, Point2D endPoint) {
         Queue<Point2D> queue = new LinkedList<>();
         queue.add(startPoint);
         map[startPoint.x][startPoint.y] = 1;
+        map[endPoint.x][endPoint.y] = 500;
+
 
         while (!queue.isEmpty()) {
             Point2D p = queue.remove();
@@ -161,8 +174,60 @@ class WaveAlgorithm {
         }
     }
 
-    public ArrayList<Point2D> getRoad(Point2D exit) {
-        ArrayList<Point2D> road = new ArrayList<>();
-        return road;
+    public HashMap<Integer, Point2D> getRoad1(Point2D start, Point2D exit) {
+        HashMap<Integer, Point2D> roadMap = new HashMap<>();
+        roadMap.put(500, new Point2D(start.x,start.y));
+        Point2D newPoint = new Point2D(start.x,start.y);
+
+        SortedMap<Integer, Point2D> tempSortedMap;
+        int tempPoint = map[newPoint.x][newPoint.y];
+
+        while (map[newPoint.x][newPoint.y] != map[exit.x][exit.y]) {
+            tempSortedMap = new TreeMap<>();
+
+                if (map[newPoint.x-1][newPoint.y] == -1){ // up
+                } else {
+                    tempPoint = map[newPoint.x-1][newPoint.y];
+                    tempSortedMap.put(tempPoint, new Point2D(newPoint.x-1,newPoint.y));
+                }
+
+                if (map[newPoint.x][newPoint.y+1] == -1) { // left
+                } else if (map[newPoint.x][newPoint.y+1] < tempPoint) {
+                    tempPoint = map[newPoint.x][newPoint.y+1];
+                    tempSortedMap.put(tempPoint, new Point2D(newPoint.x,newPoint.y+1));
+                }
+
+                if (map[newPoint.x+1][newPoint.y] == -1) { // down
+                } else if (map[newPoint.x+1][newPoint.y] < tempPoint) {
+                    tempPoint = map[newPoint.x+1][newPoint.y];
+                    tempSortedMap.put(tempPoint, new Point2D(newPoint.x+1,newPoint.y));
+                }
+
+                if (map[newPoint.x][newPoint.y-1] == -1) { // right
+                } else if (map[newPoint.x][newPoint.y-1] < tempPoint) {
+                    tempPoint = map[newPoint.x][newPoint.y-1];
+                    tempSortedMap.put(tempPoint, new Point2D(newPoint.x,newPoint.y-1));
+                }
+
+            roadMap.put(tempSortedMap.firstKey(), tempSortedMap.get(tempSortedMap.firstKey()));
+            tempPoint = tempSortedMap.firstKey();
+
+
+            newPoint.x = tempSortedMap.get(tempSortedMap.firstKey()).x;
+            newPoint.y = tempSortedMap.get(tempSortedMap.firstKey()).y;
+
+        }
+
+
+
+        for (int i = 2; i <= 11; i++) {
+            map[roadMap.get(i).x][roadMap.get(i).y] = 111;
+        }
+
+
+
+
+        return roadMap;
     }
+
 }
