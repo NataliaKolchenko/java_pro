@@ -1,8 +1,8 @@
-package example;
+package Lections;
 
 import java.util.Arrays;
 
-public class LambdaExample {
+public class LambdaClassEx {
     public static void main(String[] args) {
         String[] strArr = {"qwer", "", "qw", "e"};
 
