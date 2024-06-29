@@ -1,7 +1,5 @@
 package HW;
 
-import MyEasyLambdaExamples.Operations;
-
 import java.util.ArrayList;
 
 //Создайте метод, который принимает список чисел и void-метод, отвечающий за логику.
