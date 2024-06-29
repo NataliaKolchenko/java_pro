@@ -3,7 +3,6 @@ package HW;
 import MyEasyLambdaExamples.Operations;
 
 import java.util.ArrayList;
-import java.util.List;
 
 //Создайте метод, который принимает список чисел и void-метод, отвечающий за логику.
 // Метод должен применять переданный void-метод к каждому элементу списка.

@@ -4,7 +4,6 @@ package HW;
 // как именно объединять элементы. Например, сложить попарно элементы двух числовых списков.
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class LambdaHW5 {
     public static void main(String[] args) {
