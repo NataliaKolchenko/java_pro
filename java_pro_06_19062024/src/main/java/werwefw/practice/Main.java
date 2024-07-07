@@ -5,7 +5,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         int numStart = 185;
-        int numEnd = 2490000;
+        int numEnd = 300;
 
         long start = System.currentTimeMillis();
         new Main().isSelfDividedMath(numStart, numEnd);
@@ -15,6 +15,8 @@ public class Main {
         new Main().isSelfDivPars(numStart, numEnd);
         end = System.currentTimeMillis() - start;
         System.out.println("Time " + end);
+
+        System.out.println(new Main().isSelfDividedMath(numStart, numEnd));
 
     }
 
