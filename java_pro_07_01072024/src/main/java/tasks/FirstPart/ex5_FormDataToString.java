@@ -1,6 +1,5 @@
 package tasks.FirstPart;
 
-//Преобразовать список дат в список строк в формате "год-месяц".
 
 import com.github.javafaker.Faker;
 
@@ -10,6 +9,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+//Преобразовать список дат в список строк в формате "год-месяц".
 public class ex5_FormDataToString {
     static final Faker FAKER = new Faker();
 
