@@ -5,7 +5,7 @@ import java.util.*;
 //найти одинаковые буквы в словах
 public class CommonWords {
     public static void main(String[] args) {
-        String[] stringArr = {"ruck", "lu", "cooulii", "cualk", "caull", "culoou"};
+        String[] stringArr = {"ruckzz", "luzz", "cooulizzi", "czualzk", "zzcaull", "czulozou"};
 
         List<String> newList = Arrays.stream(stringArr)
                 .sorted(Comparator.comparingInt(String::length))
