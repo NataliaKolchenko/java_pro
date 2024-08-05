@@ -2,6 +2,7 @@ package example.lection;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class ServicesImp implements TaskServices {
     private List<TaskItem> tasksList = new ArrayList<>();
@@ -15,30 +16,45 @@ public class ServicesImp implements TaskServices {
     }
 
     @Override
-    public TaskItem getTask(int id) {
-//        System.out.println(tasksList.get(0).getId());
+    public TaskItem getTask(UUID id) {
         return tasksList.stream()
-                .filter(i -> i.getId() == id)
+                .filter(i -> i.getId().equals(id))
                 .findFirst()
                 .get();
     }
 
     @Override
-    public boolean updateTask(int id, TaskItem newTaskItem) {
+    public boolean updateTask(UUID id, TaskItem newTaskItem) {
         TaskItem t = getTask(id);
-//        if (t.getId() != id) {
-//            return false;
-//        }
-        t.setTitle(newTaskItem.getTitle());
-        t.setDescription(newTaskItem.getDescription());
-        t.setDeadline(newTaskItem.getDeadline());
-        t.setTimeZone(newTaskItem.getTimeZone());
+
+        if (newTaskItem == null) {
+            return false;
+        }
+
+        if (newTaskItem.getTitle() != null && !newTaskItem.getTitle().isEmpty()) {
+            t.setTitle(newTaskItem.getTitle());
+        }
+
+        if (newTaskItem.getDescription() != null && !newTaskItem.getDescription().isEmpty()) {
+            t.setDescription(newTaskItem.getDescription());
+        }
+
+        if (newTaskItem.getDeadline() != null) {
+            t.setDeadline(newTaskItem.getDeadline());
+        }
+
 
         return true;
     }
 
     @Override
-    public void deleteTask(int id) {
-
+    public boolean deleteTask(UUID id) {
+        return tasksList.removeIf(taskItem -> taskItem.getId().equals(id));
     }
+
+    @Override
+    public List<TaskItem> getAllTasksList() {
+        return new ArrayList<>(tasksList);
+    }
+
 }

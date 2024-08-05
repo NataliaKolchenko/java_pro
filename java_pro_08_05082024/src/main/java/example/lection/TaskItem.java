@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.Month;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
+import java.util.UUID;
 
 //Пользователь должен иметь возможность создать новую задачу, указав следующие поля:
 //Название задачи
@@ -12,30 +13,24 @@ import java.time.ZonedDateTime;
 //Дедлайн (дата и время, до которого задача должна быть выполнена)
 //Временная зона пользователя
 public class TaskItem {
-    private int id = 0;
-    private static int globalID = 0;
+    private UUID id;
     private String title;
     private String description;
     private LocalDateTime createdDateTime;
     private LocalDateTime deadline;
-    private ZonedDateTime timeZone;
+    private ZoneId timeZone;
 
-    public TaskItem(String title, String description, LocalDateTime deadline, ZonedDateTime timeZone) {
-        this.id = ++globalID;
+    public TaskItem(String title, String description, LocalDateTime deadline) {
+        this.id = UUID.randomUUID();
         this.title = title;
         this.description = description;
         this.createdDateTime = LocalDateTime.now();
         this.deadline = deadline;
-        this.timeZone = timeZone;
-    }
-
-    public TaskItem(String title, String description, LocalDateTime deadline) {
-
-        this(title, description, deadline, LocalDateTime.of(2024, Month.SEPTEMBER, 28, 14, 33).atZone(ZoneId.of("Asia/Kuala_Lumpur")));
+        this.timeZone = ZoneId.of("Asia/Kuala_Lumpur");
     }
 
 
-    public int getId() {
+    public UUID getId() {
         return this.id;
     }
 
@@ -55,7 +50,7 @@ public class TaskItem {
         return deadline;
     }
 
-    public ZonedDateTime getTimeZone() {
+    public ZoneId getTimeZone() {
         return timeZone;
     }
 
@@ -75,7 +70,19 @@ public class TaskItem {
         this.deadline = deadline;
     }
 
-    public void setTimeZone(ZonedDateTime timeZone) {
+    public void setTimeZone(ZoneId timeZone) {
         this.timeZone = timeZone;
+    }
+
+    @Override
+    public String toString() {
+        return "TaskItem{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", createdDateTime=" + createdDateTime +
+                ", deadline=" + deadline +
+                ", timeZone=" + timeZone +
+                '}';
     }
 }

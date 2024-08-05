@@ -1,13 +1,18 @@
 package example.lection;
 
+import java.util.List;
+import java.util.UUID;
+
 public interface TaskServices {
 
     TaskItem createTask(TaskItem newTaskItem);
 
-    TaskItem getTask(int id);
+    TaskItem getTask(UUID id);
 
-    boolean updateTask(int id, TaskItem newTaskItem);
+    boolean updateTask(UUID id, TaskItem newTaskItem);
 
-    void deleteTask(int id);
+    boolean deleteTask(UUID id);
+
+    List<TaskItem> getAllTasksList();
 
 }
