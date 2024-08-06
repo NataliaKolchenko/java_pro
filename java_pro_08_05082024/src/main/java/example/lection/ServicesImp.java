@@ -10,7 +10,12 @@ public class ServicesImp implements TaskServices {
 
     @Override
     public TaskItem createTask(TaskItem newTaskItem) {
-        tasksList.add(newTaskItem);
+        try {
+            tasksList.add(newTaskItem);
+        } catch (NullPointerException e) {
+            e.printStackTrace();
+        }
+//        tasksList.add(newTaskItem);
         return newTaskItem;
     }
 
@@ -30,7 +35,7 @@ public class ServicesImp implements TaskServices {
             return false;
         }
 
-        if (newTaskItem.getTitle() != null && !newTaskItem.getTitle().isEmpty()) {
+        if (newTaskItem.getTitle() == null && newTaskItem.getTitle().isEmpty()) {
             t.setTitle(newTaskItem.getTitle());
         }
 

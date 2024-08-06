@@ -22,6 +22,7 @@ public class UseInterface {
         TaskItem taskItem2 = new TaskItem("testTask2", "test 2", localDateTime4);
         TaskItem taskItem3 = new TaskItem("testTask3", "test 3", localDateTime4);
         TaskItem taskItem4 = new TaskItem("testTask4", "test 4", localDateTime4);
+        TaskItem errorTask = new TaskItem("", "error", localDateTime4);
 
         taskServices.createTask(taskItem1);
 //        taskServices.createTask(taskItem2);
@@ -34,17 +35,17 @@ public class UseInterface {
         System.out.println("-------------------------");
 
 //        TaskItem taskItemUpdated = new TaskItem("Updated", "Updated111", localDateTime4);
-//        taskServices.updateTask(taskItem1.getId(), taskItem1);
+        taskServices.updateTask(taskItem1.getId(), errorTask);
         System.out.println("getAllTasks:" + taskServices.getAllTasksList());
-        System.out.println("-------------------------");
-
-        taskServices.deleteTask(taskItem4.getId());
-        System.out.println("getAllTasks:" + taskServices.getAllTasksList());
-
-
-        System.out.println(controler.getAllTasks());
-
-        controler.writeToJSON();
+//        System.out.println("-------------------------");
+//
+//        taskServices.deleteTask(taskItem4.getId());
+//        System.out.println("getAllTasks:" + taskServices.getAllTasksList());
+//
+//
+//        System.out.println(controler.getAllTasks());
+//
+//        controler.writeToJSON();
 
 
     }
