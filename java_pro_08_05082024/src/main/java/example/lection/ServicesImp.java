@@ -11,7 +11,6 @@ public class ServicesImp implements TaskServices {
     @Override
     public TaskItem createTask(TaskItem newTaskItem) {
         tasksList.add(newTaskItem);
-//        System.out.println(tasksList.size());
         return newTaskItem;
     }
 

@@ -13,11 +13,14 @@ import static java.lang.Compiler.disable;
 
 
 public class Controler {
-    ObjectMapper jsonMapper = new ObjectMapper();
+    private ObjectMapper jsonMapper = new ObjectMapper();
 
+    private String path = "TASK_LIST.json";
+    private ServicesImp taskServices;
 
-    String path = "TASK_LIST.json";
-    ServicesImp taskServices = new ServicesImp();
+    public Controler(ServicesImp taskServices) {
+        this.taskServices = taskServices;
+    }
 
     public String getAllTasks() throws JsonProcessingException {
         jsonMapper.registerModule(new JavaTimeModule())
