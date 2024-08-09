@@ -1,51 +1,47 @@
 package example.lection;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
+import example.lection.Controller.WorkerWithFiles;
+import example.lection.DAO.ServicesImp;
+import example.lection.Model.TaskItem;
 
+import java.io.IOException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.time.Month;
 
 public class UseInterface {
 
-    //to Do
-    // десереализация
-    //юнит тесты
-    // с/д 1 объекта
-    //форматирование даты/времени
-    public static void run() throws JsonProcessingException {
-        LocalDateTime localDateTime4 = LocalDateTime.of(2024, Month.SEPTEMBER, 28, 14, 33);
+
+    public static void run() throws IOException {
+        Timestamp localDateTime4 = Timestamp.valueOf(LocalDateTime.of(2024, Month.SEPTEMBER, 28, 14, 33));
 
         ServicesImp taskServices = new ServicesImp();
-        Controler controler = new Controler(taskServices);
+        WorkerWithFiles workerWithFiles = new WorkerWithFiles(taskServices);
 
         TaskItem taskItem1 = new TaskItem("testTask1", "test 1", localDateTime4);
-        TaskItem taskItem2 = new TaskItem("testTask2", "test 2", localDateTime4);
-        TaskItem taskItem3 = new TaskItem("testTask3", "test 3", localDateTime4);
-        TaskItem taskItem4 = new TaskItem("testTask4", "test 4", localDateTime4);
-        TaskItem errorTask = new TaskItem("", "error", localDateTime4);
-
         taskServices.createTask(taskItem1);
-//        taskServices.createTask(taskItem2);
-//        taskServices.createTask(taskItem3);
-//        taskServices.createTask(taskItem4);
 
-        System.out.println("getTask: " + taskServices.getTask(taskItem1.getId()));
-//        System.out.println("getAllTasks:" + taskServices.getAllTasksList());
+        TaskItem taskItem3 = new TaskItem("testTask3", "", localDateTime4);
+        taskServices.createTask(taskItem3);
 
-        System.out.println("-------------------------");
+        TaskItem taskItem2 = new TaskItem("testTask2", "", null);
+        taskServices.createTask(taskItem2);
 
-//        TaskItem taskItemUpdated = new TaskItem("Updated", "Updated111", localDateTime4);
-        taskServices.updateTask(taskItem1.getId(), errorTask);
-        System.out.println("getAllTasks:" + taskServices.getAllTasksList());
-//        System.out.println("-------------------------");
+        TaskItem taskItem4 = new TaskItem("testTask1", "test 1", null);
+        taskServices.createTask(taskItem4);
+
+//        System.out.println(taskServices.getAllTasksList());
+
+//        System.out.println(controler.serializationToJSON());
 //
-//        taskServices.deleteTask(taskItem4.getId());
-//        System.out.println("getAllTasks:" + taskServices.getAllTasksList());
-//
-//
-//        System.out.println(controler.getAllTasks());
-//
+//        controler.serializationToJSON();
 //        controler.writeToJSON();
+
+        System.out.println(workerWithFiles.deserializationToJSON());
+//        System.out.println(taskServices.getAllTasksList());
+        System.out.println("------------");
+        workerWithFiles.putToList(workerWithFiles.deserializationToJSON());
+        System.out.println(taskServices.getAllTasksList());
 
 
     }

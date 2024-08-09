@@ -1,9 +1,10 @@
-package example.lection;
+package example.lection.Model;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.Month;
 import java.time.ZoneId;
-import java.time.ZonedDateTime;
 import java.util.UUID;
 
 //Пользователь должен иметь возможность создать новую задачу, указав следующие поля:
@@ -13,24 +14,29 @@ import java.util.UUID;
 //Дедлайн (дата и время, до которого задача должна быть выполнена)
 //Временная зона пользователя
 public class TaskItem {
-    private UUID id;
+    private String id;
     private String title;
     private String description;
-    private LocalDateTime createdDateTime;
-    private LocalDateTime deadline;
+    private Timestamp createdDateTime;
+    private Timestamp deadline;
     private ZoneId timeZone;
 
-    public TaskItem(String title, String description, LocalDateTime deadline) {
-        this.id = UUID.randomUUID();
+    public TaskItem(@JsonProperty("title") String title,
+                    @JsonProperty("description") String description,
+                    @JsonProperty("deadline") Timestamp deadline) {
+        this.id = UUID.randomUUID().toString();
         this.title = title;
         this.description = description;
-        this.createdDateTime = LocalDateTime.now();
+        this.createdDateTime = Timestamp.valueOf(LocalDateTime.now());
         this.deadline = deadline;
         this.timeZone = ZoneId.of("Asia/Kuala_Lumpur");
     }
 
+    public TaskItem() {
 
-    public UUID getId() {
+    }
+
+    public String getId() {
         return this.id;
     }
 
@@ -42,16 +48,20 @@ public class TaskItem {
         return description;
     }
 
-    public LocalDateTime getCreatedDateTime() {
+    public Timestamp getCreatedDateTime() {
         return createdDateTime;
     }
 
-    public LocalDateTime getDeadline() {
+    public Timestamp getDeadline() {
         return deadline;
     }
 
     public ZoneId getTimeZone() {
         return timeZone;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public void setTitle(String title) {
@@ -62,11 +72,11 @@ public class TaskItem {
         this.description = description;
     }
 
-    public void setCreatedDateTime(LocalDateTime createdDateTime) {
+    public void setCreatedDateTime(Timestamp createdDateTime) {
         this.createdDateTime = createdDateTime;
     }
 
-    public void setDeadline(LocalDateTime deadline) {
+    public void setDeadline(Timestamp deadline) {
         this.deadline = deadline;
     }
 

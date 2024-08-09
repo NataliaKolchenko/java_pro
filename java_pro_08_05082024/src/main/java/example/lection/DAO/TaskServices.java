@@ -1,4 +1,6 @@
-package example.lection;
+package example.lection.DAO;
+
+import example.lection.Model.TaskItem;
 
 import java.util.List;
 import java.util.UUID;
@@ -7,9 +9,9 @@ public interface TaskServices {
 
     TaskItem createTask(TaskItem newTaskItem);
 
-    TaskItem getTask(UUID id);
+    TaskItem getTask(String id);
 
-    boolean updateTask(UUID id, TaskItem newTaskItem);
+    boolean updateTask(String id, TaskItem newTaskItem);
 
     boolean deleteTask(UUID id);
 
