@@ -23,14 +23,18 @@ public class GeometricHolder {
 
 
     public void addToSet(Geometric geometric) {
-        if (geometric != null)
-            geometricSet.add(geometric);
+        if (geometric == null) {
+            throw new ObjectIsNullException("object is null");
+        }
+        geometricSet.add(geometric);
     }
 
 
     public void addToMap(Double key, Geometric geometric) {
-        if (geometric != null && key != null)
-            geometricMap.put(key, geometric);
+        if (geometric == null || key == null) {
+            throw new ObjectIsNullException("object is null");
+        }
+        geometricMap.put(key, geometric);
     }
 
 
